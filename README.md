@@ -18,13 +18,29 @@ alphabetical_testing.xlsm was utilized to test the scripts and was run on Multip
 
 ## Subroutines
     Subroutines for the project
-        1. ThroughWorksheets - This subroutine is the main script that runs.  It loops through all worksheets in the workbook in order to run the stocks subroutine.   Additionally the top row is set to be frozen so that the heading stays when you scroll and sets the zoom to be 95% so that all data can be viewed.
-        2. Stocks  - This subroutine does most of the work.   It receives the sheet as the only argument.   This subroutine performs the following tasks: 
-            * Add column headers for the summary by ticker data and the labels for the greatest information
-            * Sort the data by ticker / date to ensure that the open / close price can be gotten from the first and last row.
-            * Obtain the number of rows with data
-            * Loop from row 2 to the last row with data creating the summary yearly change, percent change and total stock volume
-            * Output the data in the summary section of the spreadsheet
-            * If necessary update the greatest section of the spreadsheet with information from the summary data line
-        3. BuildOutputRow - This subroutine takes as arguments, the sheet we are processing, the output row to update for the ticker and all of the variables for that ticker that need to be updated to the sheet.
-        4. CheckForGreatestChange - This subroutine receives the sheet and the output row of the summary ticker data that we want to compare to the current Greatest values to update if necessary. If the summary ticker has the greatest of any of the three categories than the ticker and value are updated for that greatest category.
+        1. Workbook_Open - This subroutine is in ThisWorkBook in the spreadsheet and runs when the workbook is opened.
+          It runs Module1.ThroughWorksheets.
+        2. ThroughWorksheets - This subroutine is the main script that runs. 
+            This subroutine performs the following tasks:
+            * Loops through all worksheets in the workbook in order to run the stocks subroutine.   
+            * The top row is set to be frozen so that the heading stays when you scroll.
+            * The zoom is set to 92% so that all data can be viewed.
+        3. Stocks  - This subroutine does most of the work and creates the summary and greatest information for sheet sent as an argument.  
+            This subroutine performs the following tasks: 
+              * Add column headers for the summary by ticker data and the labels for the greatest information
+              * Sort the data by ticker / date to ensure that the open / close price can be gotten from the first and last row.
+              * Obtain the number of rows with data
+              * Loop from row 2 to the last row with data creating the summary yearly change, percent change and total stock volume
+              * Output the data in the summary section of the spreadsheet
+              * If necessary update the greatest section of the spreadsheet with information from the summary data line
+        4. BuildOutputRow - This subroutine outputs a row of summary ticker data.
+            The summary takes as arguments, the sheet we are processing, the output row to update for the ticker and all of the variables for that ticker that need to be updated to the sheet.
+        5. CheckForGreatestChange - This subroutine compares summary ticker information to the greatest info and updates if needed.
+            This subroutine receives the sheet and the output row of the summary ticker data that we want to compare to the current Greatest values.
+            It the summary ticker data is greater than any of the existing data for one of the greatest categories then it is update with the ticker and the value.
+
+## Execution
+The process is run on all worksheets when the workbook is opened.  Additional it can be run by running Module1 ThroughWorksheets.
+
+## Output
+
