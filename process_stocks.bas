@@ -152,7 +152,7 @@ End Sub
 Sub BuildOutputRow(Sheet, OutputRow, RowTicker, RowOpenYear, RowCloseYear, RowTotalStockVolume):
     ' Output Row
     Sheet.Cells(OutputRow, 9).Value = RowTicker
-    Sheet.Cells(OutputRow, 10).Value = RowOpenYear - RowCloseYear
+    Sheet.Cells(OutputRow, 10).Value = RowCloseYear - RowOpenYear
     
     ' Add conditional formatting
     With Sheet.Cells(OutputRow, 10).FormatConditions.Add(xlCellValue, xlGreater, "=0")
@@ -167,7 +167,7 @@ Sub BuildOutputRow(Sheet, OutputRow, RowTicker, RowOpenYear, RowCloseYear, RowTo
     If RowOpenYear = 0 Then
         Sheet.Cells(OutputRow, 11).Value = 0
     Else
-        Sheet.Cells(OutputRow, 11).Value = (RowOpenYear - RowCloseYear) / RowOpenYear
+        Sheet.Cells(OutputRow, 11).Value = (RowCloseYear - RowOpenYear) / RowOpenYear
     End If
     Sheet.Cells(OutputRow, 11).NumberFormat = "0.00%"
     Sheet.Cells(OutputRow, 12).Value = RowTotalStockVolume
